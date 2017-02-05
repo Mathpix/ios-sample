@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zna-Ew-UZh">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Custom Navigation Controller-->
+        <scene sceneID="1cD-Nu-Zwm">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="zna-Ew-UZh" customClass="CustomNavigationController" customModule="MathpixAPISample" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="D7m-9X-z9f">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9S6-4f-lWb" kind="relationship" relationship="rootViewController" id="ZMN-5w-B0p"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZgI-98-bQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-269" y="320"/>
+        </scene>
+        <!--CameraVC-->
+        <scene sceneID="iQm-Gd-apN">
+            <objects>
+                <viewController extendedLayoutIncludesOpaqueBars="YES" id="9S6-4f-lWb" customClass="CameraVC" customModule="MathpixAPISample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GfO-b7-LZD"/>
+                        <viewControllerLayoutGuide type="bottom" id="c7S-pR-cAO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ps7-ue-0Kx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kh6-rp-UAL" customClass="CameraSessionView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pmp-u7-kG4" userLabel="Bottom Background View">
+                                <rect key="frame" x="0.0" y="592" width="375" height="75"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9T-xY-p6k">
+                                <rect key="frame" x="162.5" y="320" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="XCy-Fq-kM1"/>
+                                    <constraint firstAttribute="width" constant="50" id="bw3-v7-inC"/>
+                                </constraints>
+                                <state key="normal" image="shutter-icon-2"/>
+                                <connections>
+                                    <action selector="shutterButtonClick:" destination="9S6-4f-lWb" eventType="touchUpInside" id="ZQq-II-h2j"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78T-PY-HMg" userLabel="Bottom Shutter Button">
+                                <rect key="frame" x="162.5" y="602" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="B0W-oq-T9W"/>
+                                    <constraint firstAttribute="width" constant="50" id="yXu-Ma-YYr"/>
+                                </constraints>
+                                <state key="normal" image="shutter-icon-2"/>
+                                <connections>
+                                    <action selector="shutterButtonClick:" destination="9S6-4f-lWb" eventType="touchUpInside" id="uPJ-y1-mOQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cA2-gk-MoC" customClass="CameraFlashButton">
+                                <rect key="frame" x="20" y="28" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="iRa-Ec-cb1"/>
+                                    <constraint firstAttribute="width" constant="40" id="rwo-rQ-Xsg"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="flashButtonClick:" destination="9S6-4f-lWb" eventType="touchUpInside" id="J6m-2Z-mB3"/>
+                                </connections>
+                            </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xpj-8n-Z68">
+                                <rect key="frame" x="40" y="412" width="295" height="180"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="0Q2-J1-qvb"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="Qzl-0c-Tlf" kind="embed" identifier="PreviewSegue" id="8wS-dA-4Oo"/>
+                                </connections>
+                            </containerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="powered" translatesAutoresizingMaskIntoConstraints="NO" id="njU-DU-64G">
+                                <rect key="frame" x="251" y="28" width="100" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="gY9-gg-K2W"/>
+                                    <constraint firstAttribute="width" secondItem="njU-DU-64G" secondAttribute="height" multiplier="67:10" id="tr9-GX-QVV"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Kh6-rp-UAL" secondAttribute="trailing" id="1fi-VT-U62"/>
+                            <constraint firstItem="njU-DU-64G" firstAttribute="top" secondItem="GfO-b7-LZD" secondAttribute="bottom" constant="8" id="2il-Kl-op0"/>
+                            <constraint firstItem="78T-PY-HMg" firstAttribute="centerX" secondItem="ps7-ue-0Kx" secondAttribute="centerX" id="5id-ba-12S"/>
+                            <constraint firstItem="pmp-u7-kG4" firstAttribute="leading" secondItem="ps7-ue-0Kx" secondAttribute="leading" id="6Ti-IK-Y25"/>
+                            <constraint firstItem="cA2-gk-MoC" firstAttribute="top" secondItem="GfO-b7-LZD" secondAttribute="bottom" constant="8" id="DS0-1I-8TF"/>
+                            <constraint firstItem="pmp-u7-kG4" firstAttribute="top" secondItem="Xpj-8n-Z68" secondAttribute="bottom" id="JaU-Sj-C0L"/>
+                            <constraint firstItem="Kh6-rp-UAL" firstAttribute="top" secondItem="ps7-ue-0Kx" secondAttribute="top" id="Lz8-mV-RG9"/>
+                            <constraint firstItem="q9T-xY-p6k" firstAttribute="centerX" secondItem="ps7-ue-0Kx" secondAttribute="centerX" id="Nz7-lV-uxF"/>
+                            <constraint firstItem="c7S-pR-cAO" firstAttribute="top" secondItem="pmp-u7-kG4" secondAttribute="bottom" id="OGQ-Rw-DIR"/>
+                            <constraint firstAttribute="trailing" secondItem="pmp-u7-kG4" secondAttribute="trailing" id="OWh-Ed-u9Z"/>
+                            <constraint firstItem="c7S-pR-cAO" firstAttribute="top" secondItem="78T-PY-HMg" secondAttribute="bottom" constant="15" id="Qeq-3l-PPC"/>
+                            <constraint firstItem="Xpj-8n-Z68" firstAttribute="leading" secondItem="ps7-ue-0Kx" secondAttribute="leading" constant="40" id="T3Z-te-pY6"/>
+                            <constraint firstItem="cA2-gk-MoC" firstAttribute="leading" secondItem="ps7-ue-0Kx" secondAttribute="leading" constant="20" id="a5P-Gm-vB0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="njU-DU-64G" secondAttribute="trailing" constant="8" id="bvR-0G-96T"/>
+                            <constraint firstItem="Kh6-rp-UAL" firstAttribute="leading" secondItem="ps7-ue-0Kx" secondAttribute="leading" id="fJY-Oa-xcH"/>
+                            <constraint firstItem="q9T-xY-p6k" firstAttribute="top" secondItem="GfO-b7-LZD" secondAttribute="bottom" constant="300" id="mWM-Rj-kHw"/>
+                            <constraint firstAttribute="trailing" secondItem="Xpj-8n-Z68" secondAttribute="trailing" constant="40" id="uHS-9u-v7Y"/>
+                            <constraint firstItem="c7S-pR-cAO" firstAttribute="top" secondItem="Xpj-8n-Z68" secondAttribute="bottom" constant="75" id="vch-AQ-S3W"/>
+                            <constraint firstItem="c7S-pR-cAO" firstAttribute="top" secondItem="Kh6-rp-UAL" secondAttribute="bottom" id="wsI-gU-2Sf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="2k1-YT-5bp"/>
+                    <connections>
+                        <outlet property="cameraView" destination="Kh6-rp-UAL" id="c5S-oY-YIa"/>
+                        <outlet property="containerBottomOffsetConstraint" destination="vch-AQ-S3W" id="Oj2-3n-xun"/>
+                        <outlet property="containerHeightConstraint" destination="0Q2-J1-qvb" id="aM4-dR-Kub"/>
+                        <outlet property="containerLeadingConstraint" destination="T3Z-te-pY6" id="58l-vM-M0i"/>
+                        <outlet property="containerTrailingConstraint" destination="uHS-9u-v7Y" id="PgX-Id-f17"/>
+                        <outlet property="containerView" destination="Xpj-8n-Z68" id="JGA-td-c52"/>
+                        <outlet property="flashButton" destination="cA2-gk-MoC" id="okO-gu-PBk"/>
+                        <outlet property="shutterBottomButton" destination="78T-PY-HMg" id="ZVo-Rk-bqD"/>
+                        <outlet property="shutterButton" destination="q9T-xY-p6k" id="U90-Lm-IIa"/>
+                        <outlet property="shutterCenterConstraint" destination="Nz7-lV-uxF" id="F6J-bk-fRF"/>
+                        <outlet property="shutterTopConstraint" destination="mWM-Rj-kHw" id="gF2-Wp-l8O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BKa-SM-NmX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="443" y="320"/>
+        </scene>
+        <!--Preview Web View Controller-->
+        <scene sceneID="YK0-7K-Mc2">
+            <objects>
+                <viewController storyboardIdentifier="PreviewWebViewControllerID" modalPresentationStyle="currentContext" id="s0f-J4-eig" customClass="PreviewWebViewController" customModule="MathpixAPISample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qx0-b3-vyb"/>
+                        <viewControllerLayoutGuide type="bottom" id="vBA-8U-4Kg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Pir-ch-ZaO">
+                        <rect key="frame" x="0.0" y="0.0" width="295" height="180"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="59t-hW-cZ2"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fJe-wN-fQb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1754" y="104"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="XAx-Vu-R43">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Qzl-0c-Tlf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RNq-wt-TCc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" id="lho-gN-l32">
+                        <rect key="frame" x="0.0" y="136" width="295" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="s0f-J4-eig" kind="relationship" relationship="rootViewController" id="NDu-Zt-sEp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kUa-Z5-Mdq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1169" y="104"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="powered" width="201" height="30"/>
+        <image name="shutter-icon-2" width="100" height="100"/>
+    </resources>
+</document>

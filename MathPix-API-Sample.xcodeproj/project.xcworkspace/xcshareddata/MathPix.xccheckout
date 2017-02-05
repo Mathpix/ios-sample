@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>79F7C43C-F3C7-4B07-9155-A521CD23B6EB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MathPix</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0B1C98B5CB48DFD9335BE3700F7CA6C43AB29558</key>
+		<string>https://github.com/nicodjimenez/mathpix-ios</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MathPix.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0B1C98B5CB48DFD9335BE3700F7CA6C43AB29558</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/nicodjimenez/mathpix-ios</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>0B1C98B5CB48DFD9335BE3700F7CA6C43AB29558</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0B1C98B5CB48DFD9335BE3700F7CA6C43AB29558</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MathPix</string>
+		</dict>
+	</array>
+</dict>
+</plist>
