@@ -13,7 +13,7 @@ struct Constants {
     
     
     //URLS
-    static let requestURL = "https://api.mathpix.com/json"
+    static let requestURL = "https://api.mathpix.com/v2/latex"
     
     //Request
     static let boundaryConstant = "----------V2ymHFg03ehbqgZCaKO6jy"
@@ -23,7 +23,9 @@ struct Constants {
     static let bodyEnd = "\r\n--\(boundaryConstant)--\r\n"
     
     //Web API Key
-    static let webAPIKey = "AIzaSyBNsKbdFiqYvBShxzEd_susFUeln03uUws"
+    // Change these values to yours
+    static let appID = "mathpix"
+    static let webAPIKey = "139ee4b61be2e4abcfb1238d9eb99902"
 
 }
 

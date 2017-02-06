@@ -85,6 +85,8 @@ class ImageService: NSObject {
             let bodyLength = String(body.length)
             
             if let currentUid = uid {
+                request.addValue(Constants.appID, forHTTPHeaderField: "app_id")
+                request.addValue(Constants.webAPIKey, forHTTPHeaderField: "app_key")
                 request.addValue(currentUid, forHTTPHeaderField: "DeviceId")
                 request.setValue(
                     "multipart/form-data; boundary=" + Constants.boundaryConstant,
@@ -96,7 +98,7 @@ class ImageService: NSObject {
             request.httpMethod = "POST"
             request.cachePolicy = .reloadIgnoringLocalCacheData
             request.httpShouldHandleCookies = false
-            request.timeoutInterval = 60
+            request.timeoutInterval = 15
             request.httpBody = body as Data
             request.url = URL
             
