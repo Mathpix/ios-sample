@@ -14,15 +14,6 @@ class ImageService: NSObject {
     
     func currentSessionConfiguration(_ uid: String?) -> URLSessionConfiguration {
         let configuration = URLSessionConfiguration.default
-        
-        if let syncId = ApplicationController.syncId,
-            let deviceId = uid {
-            configuration.httpAdditionalHeaders = [
-                "syncid": syncId,
-                "deviceId": deviceId
-            ]
-        }
-        
         return configuration
     }
     
@@ -84,16 +75,15 @@ class ImageService: NSObject {
             
             let bodyLength = String(body.length)
             
-            if let currentUid = uid {
-                request.addValue(Constants.appID, forHTTPHeaderField: "app_id")
-                request.addValue(Constants.webAPIKey, forHTTPHeaderField: "app_key")
-                request.addValue(currentUid, forHTTPHeaderField: "DeviceId")
-                request.setValue(
-                    "multipart/form-data; boundary=" + Constants.boundaryConstant,
-                    forHTTPHeaderField: "Content-Type"
-                )
-                request.setValue(bodyLength, forHTTPHeaderField: "Content-Length")
-            }
+            
+            request.addValue(Constants.appID, forHTTPHeaderField: "app_id")
+            request.addValue(Constants.webAPIKey, forHTTPHeaderField: "app_key")
+            request.setValue(
+                "multipart/form-data; boundary=" + Constants.boundaryConstant,
+                forHTTPHeaderField: "Content-Type"
+            )
+            request.setValue(bodyLength, forHTTPHeaderField: "Content-Length")
+            
             
             request.httpMethod = "POST"
             request.cachePolicy = .reloadIgnoringLocalCacheData
@@ -113,12 +103,15 @@ class ImageService: NSObject {
 
                 
                 if error != nil {
+                    // If error not nil then handle it as Network Error
                     currentError = NetworkError(error: error! as NSError)
                 } else {
+                    // If error nil then we have response data
                     if let resultData = data {
+                        // Get string representation of json to send it to webview or you can parse response data to Dictionary
                         jsonString = NSString(data: resultData, encoding: String.Encoding.utf8.rawValue) as String?
                         
-                        // Serialize json to check Parse Error or Image Recognition Error (not math)
+                        // Parse response data to check Parse Error or Image Recognition Error (not math)
                         var JSONObject: Any?
                         do {
                             JSONObject = try JSONSerialization.jsonObject(with: resultData, options: JSONSerialization.ReadingOptions.mutableLeaves)

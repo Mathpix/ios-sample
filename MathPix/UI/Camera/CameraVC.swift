@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PureLayout
 
 /**
  * This class is the top-level of the app UI
@@ -38,6 +39,7 @@ class CameraVC: UIViewController, CACameraSessionDelegate
     let imageService = ImageService()
     
     var previewViewController: PreviewWebViewController? = nil
+    let networkActivityView = UIView()
 
     override var shouldAutorotate : Bool {
         return true
@@ -53,6 +55,7 @@ class CameraVC: UIViewController, CACameraSessionDelegate
         setupCamera()
         setupOverlay()
         setupButtons()
+        setupNetworkActivityView()
         
     }
     
@@ -106,6 +109,20 @@ class CameraVC: UIViewController, CACameraSessionDelegate
         
     }
     
+    func setupNetworkActivityView() {
+        networkActivityView.backgroundColor = UIColor.darkGray
+        networkActivityView.alpha = 0.75
+        networkActivityView.isHidden = true
+        self.view.addSubview(networkActivityView)
+        self.view.bringSubview(toFront: networkActivityView)
+        networkActivityView.autoPinEdgesToSuperviewEdges()
+        
+        let networkIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        networkIndicator.startAnimating()
+        networkActivityView.addSubview(networkIndicator)
+        networkIndicator.autoCenterInSuperview()
+    }
+    
     // MARK: - Actions
 
     @IBAction func flashButtonClick(_ sender: AnyObject) {
@@ -137,22 +154,22 @@ class CameraVC: UIViewController, CACameraSessionDelegate
     
     
     func sendImageToServer(_ image:UIImage) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        networkActivityDidStart()
         imageService.sendImageToServer(self.uid, image: image) { [weak self] (jsonString, error) in
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            if let strongSelf = self {
-                // If error handle it
+                // If error handle it, handle other type of errors as you need
                 if error != nil {
                     if let networkError = error as? NetworkError {
                         switch networkError {
                         case .notReachedServer:
                             let title = "Send image timeout"
                             let message = "Our servers are currently experiencing heavy load.  We apologize for the inconvenience.  Please try again later."
-                            strongSelf.displayError(title: title, error: message)
+                            self?.displayError(title: title, error: message)
                         case .notConnectedToInternet:
                             let title = "Error"
                             let message = "No internet connection"
-                            strongSelf.displayError(title: title, error: message)
+                            self?.displayError(title: title, error: message)
+                        case .requestCanceled:
+                            return
                         default:
                             break
                         }
@@ -161,17 +178,17 @@ class CameraVC: UIViewController, CACameraSessionDelegate
                         case .failedParseJSON:
                             let title = "Error"
                             let message = "Error parse json"
-                            strongSelf.displayError(title: title, error: message)
+                            self?.displayError(title: title, error: message)
                         case .notMath(let message):
                             let resultError = NSError(domain: "localhost", code: -1, userInfo: [NSLocalizedDescriptionKey : message, "title": "Image recognition error"])
-                            strongSelf.cropOverlay.displayError(resultError)
+                            self?.cropOverlay.displayError(resultError)
                         }
                     }
                     // If json object exist send it to webview
                 } else {
-                    strongSelf.previewViewController?.jsonString = jsonString
+                    self?.previewViewController?.jsonString = jsonString
                 }
-            }
+            self?.networkActivityDidStop()
         }
     }
     
@@ -214,6 +231,19 @@ class CameraVC: UIViewController, CACameraSessionDelegate
     }
     
 }
+
+extension CameraVC : NetworkActivityAnimatable {
+    func networkActivityDidStart() {
+        networkActivityView.isHidden = false
+    }
+    
+    func networkActivityDidStop() {
+        networkActivityView.isHidden = true
+    }
+    
+}
+
+
 
 
 

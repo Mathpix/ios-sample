@@ -28,8 +28,8 @@
 		2C6C7D201E46F47800A35E35 /* www in Resources */ = {isa = PBXBuildFile; fileRef = 2C6C7D1F1E46F46000A35E35 /* www */; };
 		2C6C7D241E46F92F00A35E35 /* LaunchCameraButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6C7D231E46F92F00A35E35 /* LaunchCameraButton.m */; };
 		2C6C7D2A1E46F99D00A35E35 /* CameraStyleKitClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6C7D291E46F99D00A35E35 /* CameraStyleKitClass.m */; };
-		2C6C7D2C1E470A0800A35E35 /* ApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6C7D2B1E470A0800A35E35 /* ApplicationController.swift */; };
 		2C75CF3E1DD18B7C00C7CE37 /* JSMethodInvocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C75CF3D1DD18B7C00C7CE37 /* JSMethodInvocation.swift */; };
+		2C774A381E4999C700B74455 /* NetworkActivityAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C774A371E4999C700B74455 /* NetworkActivityAnimatable.swift */; };
 		2CB047901E472A3F00284489 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB0478F1E472A3F00284489 /* UIImage+Resize.m */; };
 		2CB047921E4743BD00284489 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB047911E4743BD00284489 /* NetworkError.swift */; };
 		2CB047941E47440600284489 /* RecognitionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB047931E47440600284489 /* RecognitionError.swift */; };
@@ -91,8 +91,8 @@
 		2C6C7D231E46F92F00A35E35 /* LaunchCameraButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchCameraButton.m; sourceTree = "<group>"; };
 		2C6C7D281E46F99D00A35E35 /* CameraStyleKitClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraStyleKitClass.h; sourceTree = "<group>"; };
 		2C6C7D291E46F99D00A35E35 /* CameraStyleKitClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraStyleKitClass.m; sourceTree = "<group>"; };
-		2C6C7D2B1E470A0800A35E35 /* ApplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationController.swift; sourceTree = "<group>"; };
 		2C75CF3D1DD18B7C00C7CE37 /* JSMethodInvocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSMethodInvocation.swift; sourceTree = "<group>"; };
+		2C774A371E4999C700B74455 /* NetworkActivityAnimatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityAnimatable.swift; sourceTree = "<group>"; };
 		2CB0478E1E472A3F00284489 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 		2CB0478F1E472A3F00284489 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		2CB047911E4743BD00284489 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -143,7 +143,6 @@
 				0AB6B10E1CD885B500C2B804 /* Constants.swift */,
 				0AB6B10F1CD885B500C2B804 /* Info.plist */,
 				0AB6B1101CD885B500C2B804 /* MathPix-Bridging-Header.h */,
-				2C6C7D2B1E470A0800A35E35 /* ApplicationController.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -153,6 +152,7 @@
 			children = (
 				0AB6B1151CD885BE00C2B804 /* Camera */,
 				0AB6B13B1CD885BE00C2B804 /* Equation */,
+				2C774A361E49997600B74455 /* Protocols */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -276,6 +276,14 @@
 				2C6C7D291E46F99D00A35E35 /* CameraStyleKitClass.m */,
 			);
 			path = "UI Assets";
+			sourceTree = "<group>";
+		};
+		2C774A361E49997600B74455 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2C774A371E4999C700B74455 /* NetworkActivityAnimatable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		4C264D5F1B8FC6CA00719667 = {
@@ -536,7 +544,6 @@
 				2C6C7D241E46F92F00A35E35 /* LaunchCameraButton.m in Sources */,
 				0AB6B15B1CD885BE00C2B804 /* OverlayView.m in Sources */,
 				0AB6B1501CD885BE00C2B804 /* CameraFlashButton.m in Sources */,
-				2C6C7D2C1E470A0800A35E35 /* ApplicationController.swift in Sources */,
 				0AB6B1111CD885B500C2B804 /* AppDelegate.swift in Sources */,
 				0AB6B1531CD885BE00C2B804 /* CameraToggleButton.m in Sources */,
 				0AB6B14A1CD885BE00C2B804 /* CropControl.swift in Sources */,
@@ -544,6 +551,7 @@
 				0AB6B1571CD885BE00C2B804 /* CaptureSessionManager.m in Sources */,
 				0AB6B14C1CD885BE00C2B804 /* CropControlOverlay.swift in Sources */,
 				2C75CF3E1DD18B7C00C7CE37 /* JSMethodInvocation.swift in Sources */,
+				2C774A381E4999C700B74455 /* NetworkActivityAnimatable.swift in Sources */,
 				0AB6B1121CD885B500C2B804 /* Constants.swift in Sources */,
 				E9982FC71D1495C400BF94FC /* CustomNavigationController.swift in Sources */,
 				2CB047921E4743BD00284489 /* NetworkError.swift in Sources */,
