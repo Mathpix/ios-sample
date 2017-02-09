@@ -55,7 +55,6 @@ class CameraVC: UIViewController, CACameraSessionDelegate
         setupCamera()
         setupOverlay()
         setupButtons()
-        setupNetworkActivityView()
         
     }
     
@@ -109,19 +108,6 @@ class CameraVC: UIViewController, CACameraSessionDelegate
         
     }
     
-    func setupNetworkActivityView() {
-        networkActivityView.backgroundColor = UIColor.darkGray
-        networkActivityView.alpha = 0.75
-        networkActivityView.isHidden = true
-        self.view.addSubview(networkActivityView)
-        self.view.bringSubview(toFront: networkActivityView)
-        networkActivityView.autoPinEdgesToSuperviewEdges()
-        
-        let networkIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-        networkIndicator.startAnimating()
-        networkActivityView.addSubview(networkIndicator)
-        networkIndicator.autoCenterInSuperview()
-    }
     
     // MARK: - Actions
 
@@ -233,13 +219,6 @@ class CameraVC: UIViewController, CACameraSessionDelegate
 }
 
 extension CameraVC : NetworkActivityAnimatable {
-    func networkActivityDidStart() {
-        networkActivityView.isHidden = false
-    }
-    
-    func networkActivityDidStop() {
-        networkActivityView.isHidden = true
-    }
     
 }
 
