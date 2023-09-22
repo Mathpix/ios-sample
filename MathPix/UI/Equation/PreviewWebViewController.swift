@@ -58,7 +58,7 @@ class PreviewWebViewController: UIViewController {
         webView.loadRequest(requestObj)
         
         // enable javascript logging to console
-        jsContext = webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as! JSContext
+        jsContext = webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as? JSContext
         
         setupCallbackFunctions()
     }
@@ -70,7 +70,7 @@ class PreviewWebViewController: UIViewController {
                 (msg: String) in
                 NSLog("Console: %@", msg)
         }
-        jsContext.objectForKeyedSubscript("console").setObject(unsafeBitCast(logFunction, to: AnyObject.self), forKeyedSubscript: "log" as (NSCopying & NSObjectProtocol)!)
+        jsContext.objectForKeyedSubscript("console").setObject(unsafeBitCast(logFunction, to: AnyObject.self), forKeyedSubscript: "log" as (NSCopying & NSObjectProtocol)?)
     }
     
     // MARK: - JS Methods

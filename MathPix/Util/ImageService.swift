@@ -50,7 +50,7 @@ class ImageService: NSObject {
             rect.size.height = heightOfImage
         }
         
-        //Crop image with aspectRation to screen. If it not make then result cropped image will scaled
+        //Crop image with aspectRation to screen. If it not make then result cropped image will scaled----
         let resultImage = image.fixOrientation().croppedImage(rect)
         
         return resultImage
@@ -64,7 +64,7 @@ class ImageService: NSObject {
         if let URL = Foundation.URL(string: Constants.requestURL) {
             var request = URLRequest(url: URL)
             
-            let imageData = UIImageJPEGRepresentation(image, 0.9)
+            let imageData = image.jpegData(compressionQuality: 0.9)
             let bodyFirst = Constants.bodyDetails as NSString
             let bodyLast = Constants.bodyEnd as NSString
             let body = NSMutableData()
@@ -121,7 +121,7 @@ class ImageService: NSObject {
                         
                         // Check if image not math
                         if let responseObject = JSONObject as? NSDictionary {
-                            if let responseError = responseObject["error"] as? String , responseError.characters.count > 0 {
+                            if let responseError = responseObject["error"] as? String , responseError.count > 0 {
                                 currentError = RecognitionError.notMath(responseError)
                             }
                         }

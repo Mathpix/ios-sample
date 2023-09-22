@@ -86,7 +86,7 @@ class CameraVC: UIViewController, CACameraSessionDelegate
     
     fileprivate func setupOverlay(){
         view.insertSubview(cropOverlay, belowSubview: containerView)
-        let insets = UIEdgeInsetsMake(0, 0, containerHeightConstraint.constant + containerBottomOffsetConstraint.constant, 0)
+        let insets = UIEdgeInsets(top: 0, left: 0, bottom: containerHeightConstraint.constant + containerBottomOffsetConstraint.constant, right: 0)
         cropOverlay.autoPinEdgesToSuperviewEdges(with: insets)
         
         cropOverlay.draggingCallback = { [unowned self] bottomCenter in
